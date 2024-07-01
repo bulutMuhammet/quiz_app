@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }}</title>
+</head>
+<body style="position: relative;">
+    <h1>{{ quiz.title }}</h1>
+    <form method="post">
+        {% for question in quiz.questions %}
+        <p>{{ question.question_text }}</p>
+        <input type="radio" name="{{ question.id }}" value="{{ question.option1 }}">{{ question.option1 }}<br>
+        <input type="radio" name="{{ question.id }}" value="{{ question.option2 }}">{{ question.option2 }}<br>
+        <input type="radio" name="{{ question.id }}" value="{{ question.option3 }}">{{ question.option3 }}<br>
+        <input type="radio" name="{{ question.id }}" value="{{ question.option4 }}">{{ question.option4 }}<br>
+
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+    <div style="position: absolute; top: 10px; right: 10px;">
+            <p>Best Score: {{ best_score }}/{{ quiz.questions|length }}</p>
+    </div>
+    <footer>
+        <p>Developer: Muhammet BULUT</p>
+    </footer>
+</body>
+</html>
