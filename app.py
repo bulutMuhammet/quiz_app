@@ -32,7 +32,7 @@ def index():
 @app.route('/quiz/<int:quiz_id>', methods=['GET', 'POST'])
 def quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
-    best_score = request.cookies.get(f"quiz_{quiz_id}", 0)
+    best_score = int(request.cookies.get(f"quiz_{quiz_id}", 0))
 
     if request.method == 'POST':
         score = 0
